@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+<title id="title">STICHA premium tailoring fabric</title><desc id="desc">A flowing emerald and ivory fabric with champagne-gold trim.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#edf8f1"/></linearGradient>
+ <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#064e3b"/><stop offset=".55" stop-color="#0f766e"/><stop offset="1" stop-color="#14532d"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#8b6f47"/><stop offset=".45" stop-color="#d4af37"/><stop offset="1" stop-color="#f2d27b"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#173b2e" flood-opacity=".18"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="28"/></filter>
+</defs>
+<rect width="900" height="620" rx="42" fill="url(#bg)"/>
+<circle cx="760" cy="90" r="110" fill="#d4af37" opacity=".13" filter="url(#soft)"/>
+<circle cx="120" cy="510" r="150" fill="#0f766e" opacity=".10" filter="url(#soft)"/>
+<g filter="url(#shadow)" transform="translate(70 35) rotate(-5 380 275)">
+ <path d="M110 110 C235 30 340 70 430 128 C535 196 620 154 742 90 L780 335 C663 414 550 432 438 370 C330 311 224 339 115 408 Z" fill="url(#green)"/>
+ <path d="M110 110 C248 130 305 202 386 252 C477 308 585 307 742 90 L758 185 C614 357 480 369 375 299 C277 233 211 190 115 206 Z" fill="#0b1f3a" opacity=".35"/>
+ <path d="M115 206 C229 194 285 239 377 300 C475 366 601 353 758 185 L766 246 C620 416 481 420 363 343 C273 285 211 263 111 276 Z" fill="#f0fdf4" opacity=".18"/>
+ <path d="M742 90 L780 335 C657 412 549 429 438 369" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+ <path d="M120 110 C236 38 339 72 429 129" fill="none" stroke="#f5e2a5" stroke-width="4" opacity=".8"/>
+ <path d="M145 393 C250 320 318 337 401 382" fill="none" stroke="#d4af37" stroke-width="5" opacity=".72"/>
+</g>
+<g transform="translate(70 505)"><text x="0" y="0" font-family="Georgia,serif" font-size="24" letter-spacing="5" fill="#3b2f2f">MEASURE • CREATE • DELIVER</text></g>
+</svg>

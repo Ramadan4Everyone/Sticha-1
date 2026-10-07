@@ -1,0 +1,10 @@
+{
+  "name": "STICHA — Digital Measurement Book",
+  "short_name": "STICHA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6f8f7",
+  "theme_color": "#0f6b52",
+  "description": "Offline-first digital measurement book for tailors.",
+  "icons": [{"src":"sticha-logo.png","sizes":"192x192","type":"image/png"},{"src":"sticha-logo.png","sizes":"512x512","type":"image/png"}]
+}

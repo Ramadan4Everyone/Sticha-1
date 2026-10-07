@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="STICHA — the simple digital measurement book for modern tailors." name="description"/>
+  <title>
+   STICHA — Digital Measurement Book
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+  <link rel="manifest" href="manifest.webmanifest"/>
+  <meta name="theme-color" content="#0f6b52"/>
+ </head>
+ <body data-theme="sticha">
+  <div class="ambient ambient-one">
+  </div>
+  <div class="ambient ambient-two">
+  </div>
+  <div class="app-shell">
+   <header class="topbar">
+    <a aria-label="STICHA home" class="brand" data-view="dashboard" href="#">
+     <img class="brand-logo" src="sticha-logo.png" alt="STICHA logo"/>
+     <span><strong>STICHA</strong><small>Simple. Smart. Made for tailors.</small></span>
+    </a>
+    <div class="top-actions">
+     <button aria-label="Theme settings" class="icon-btn" id="themeQuickBtn" title="Theme settings">
+      ◐
+     </button>
+     <button aria-label="Open profile" class="profile-chip" id="profileBtn" title="Profile settings">
+      <span class="avatar" id="profileAvatarTop">S</span>
+      <span class="profile-name" id="profileBusinessName">STICHA</span>
+      <span class="chevron">
+       ↪
+      </span>
+     </button>
+    </div>
+   </header>
+   <div class="layout">
+    <aside class="sidebar" id="sidebar">
+     <nav>
+      <button class="nav-item active" data-view="dashboard">
+       <span>
+        ⌂
+       </span>
+       Dashboard
+      </button>
+      <button class="nav-item" data-view="customers">
+       <span>
+        ♙
+       </span>
+       Customers
+      </button>
+      <button class="nav-item" data-view="add">
+       <span>
+        ＋
+       </span>
+       Add Customer
+      </button>
+      <button class="nav-item" data-view="themes">
+       <span>◐</span>
+       Appearance
+      </button>
+      <button class="nav-item" data-view="help">
+       <span>?</span>
+       Help
+      </button>
+     </nav>
+     <div class="sidebar-bottom">
+      <div class="mini-card">
+       <span class="mini-icon">
+        ☁
+       </span>
+       <div>
+        <b>
+         STICHA ready
+        </b>
+        <small data-offline-status>Local data ready</small>
+       </div>
+      </div>
+      <button class="nav-item" data-view="login">
+       <span>
+        ↪
+       </span>
+       Sign out
+      </button>
+     </div>
+    </aside>
+    <main class="main-content">
+     <!-- LOGIN -->
+     <section class="view active" id="view-login">
+      <div class="login-page">
+       <div class="login-art">
+        <div class="login-logo-wrap"><img class="login-logo" src="sticha-logo.png" alt="STICHA logo"/></div>
+        <p class="eyebrow">
+         THE DIGITAL MEASUREMENT BOOK
+        </p>
+        <h1>
+         Your craft,
+         <br/>
+         <em>beautifully organised.</em>
+        </h1>
+        <p class="lead">
+         A calm, beautiful workspace for tailors to save customer measurements, photos and notes — without carrying a paper book everywhere.
+        </p>
+        <div class="login-features">
+         <span>
+          ✓ Fast
+         </span>
+         <span>
+          ✓ Simple
+         </span>
+         <span>
+          ✓ Cloud-ready
+         </span>
+        </div>
+       </div>
+       <form class="auth-card" id="loginForm" novalidate>
+        <div class="auth-brand">
+         <div class="auth-logo">S</div>
+         <div class="auth-brand-copy"><strong>STICHA</strong><span>Digital Measurement Book</span></div>
+        </div>
+        <div class="auth-heading">
+         <p class="eyebrow" id="authEyebrow">WELCOME BACK</p>
+         <h2 id="authTitle">Sign in to STICHA</h2>
+         <p class="muted" id="authSubtitle">Continue to your tailoring workspace.</p>
+        </div>
+
+        <div class="auth-fields">
+         <label>
+          Email
+          <input id="loginEmail" required type="email" autocomplete="email" placeholder="you@example.com"/>
+         </label>
+
+         <label>
+          Password
+          <div class="password-wrap">
+           <input id="loginPassword" required type="password" autocomplete="current-password" minlength="6" placeholder="Enter your password"/>
+           <button class="show-pass" id="showPass" type="button" aria-label="Show password">Show</button>
+          </div>
+         </label>
+
+         <div class="signup-fields" id="signupFields" hidden>
+          <label>
+           Full name
+           <input id="signupName" type="text" autocomplete="name" placeholder="Your full name"/>
+          </label>
+          <label>
+           Business name
+           <input id="signupBusiness" type="text" autocomplete="organization" placeholder="e.g. Your Tailoring Business" />
+           <small class="field-hint">This is the name you will see throughout your STICHA workspace.</small>
+          </label>
+         </div>
+        </div>
+
+        <div class="auth-error" id="authMessage" role="status" aria-live="polite"></div>
+
+        <button class="primary-btn full auth-submit" id="authSubmitBtn" type="submit">
+         Sign in <span>→</span>
+        </button>
+
+        <button class="text-btn auth-switch" id="authToggleBtn" type="button">
+         New to STICHA? Create an account
+        </button>
+
+        <button class="forgot-btn" id="forgotPasswordBtn" type="button">
+         Forgot your password?
+        </button>
+
+        <div class="auth-trust">
+         <span>🔒 Secure account</span>
+         <span>☁ Your workspace</span>
+        </div>
+       </form>
+      </div>
+     </section>
+     <!-- DASHBOARD -->
+     <section class="view" id="view-dashboard">
+      <div class="page-head">
+       <div>
+        <p class="eyebrow">
+         YOUR WORKSPACE
+        </p>
+        <h1>
+         Welcome back.
+        </h1>
+        <p class="muted">
+         Keep every customer, measurement and delivery detail beautifully organised.
+        </p>
+       </div>
+       <button class="primary-btn" data-view="add">
+        ＋ Add customer
+       </button>
+      </div>
+      <section class="sticha-hero panel">
+       <div class="hero-copy">
+        <span class="hero-badge">STICHA • TAILORING MADE SIMPLE</span>
+        <h2>Measure with confidence.<br/><em>Create with style.</em></h2>
+        <p>Save accurate customer measurements, keep delivery dates visible and return to every record in seconds.</p>
+        <div class="hero-actions"><button class="primary-btn" data-view="add">＋ Add first customer</button><button class="ghost-btn" data-view="help">How STICHA helps →</button></div>
+       </div>
+       <div class="hero-art"><img src="sticha-fabric-hero.svg" alt="Elegant emerald fabric with champagne-gold detail"/></div>
+      </section>
+      <div class="stat-grid">
+       <div class="stat-card">
+        <div class="stat-icon">
+         ♙
+        </div>
+        <span>
+         Total customers
+        </span>
+        <strong id="totalCustomers">
+         4
+        </strong>
+        <small>
+         All saved profiles
+        </small>
+       </div>
+       <div class="stat-card">
+        <div class="stat-icon">
+         ⌁
+        </div>
+        <span>
+         Measurements
+        </span>
+        <strong id="totalMeasurements">
+         12
+        </strong>
+        <small>
+         Saved measurement sets
+        </small>
+       </div>
+       <div class="stat-card">
+        <div class="stat-icon">
+         ◷
+        </div>
+        <span>
+         Recently added
+        </span>
+        <strong id="recentCount">0</strong>
+        <small>
+         In the last 7 days
+        </small>
+       </div>
+       <div class="stat-card accent-stat">
+        <div class="stat-icon">
+         ☁
+        </div>
+        <span>
+         Backup status
+        </span>
+        <strong id="backupStatus">Ready</strong>
+        <small id="backupSub">Local data ready for Supabase sync</small>
+       </div>
+       <div class="stat-card accent-stat">
+        <div class="stat-icon">₦</div>
+        <span>Outstanding balance</span>
+        <strong id="outstandingAmount">₦0</strong>
+        <small>Across saved orders</small>
+       </div>
+      </div>
+      <div class="panel delivery-panel" id="deliveryPanel">
+       <div class="panel-head">
+        <div>
+         <h3>Delivery reminders</h3>
+         <p>Track what is ready, approaching, and due.</p>
+        </div>
+        <button class="ghost-btn alarm-btn" id="alarmBtn" type="button">🔔 Enable alarms</button>
+       </div>
+       <div class="delivery-summary" id="deliverySummary"></div>
+       <div class="delivery-list" id="deliveryList"></div>
+      </div>
+      <div class="dashboard-grid">
+       <div class="panel">
+        <div class="panel-head">
+         <div>
+          <h3>
+           Recent customers
+          </h3>
+          <p>
+           Jump back into a measurement profile.
+          </p>
+         </div>
+         <button class="text-link" data-view="customers">
+          View all →
+         </button>
+        </div>
+        <div class="customer-list" id="recentCustomers">
+        </div>
+       </div>
+       <div class="panel quick-panel">
+        <div class="panel-head">
+         <div>
+          <h3>
+           Quick add
+          </h3>
+          <p>
+           Save a customer in under a minute.
+          </p>
+         </div>
+        </div>
+        <button class="quick-action" data-view="add">
+         <span>
+          ＋
+         </span>
+         <div>
+          <b>
+           New customer
+          </b>
+          <small>
+           Name, phone & photo
+          </small>
+         </div>
+         <i>
+          →
+         </i>
+        </button>
+        <button class="quick-action" data-view="customers">
+         <span>
+          ⌕
+         </span>
+         <div>
+          <b>
+           Find customer
+          </b>
+          <small>
+           Search your measurement book
+          </small>
+         </div>
+         <i>
+          →
+         </i>
+        </button>
+        <button class="quick-action" data-view="themes">
+         <span>
+          ◐
+         </span>
+         <div>
+          <b>
+           Make it yours
+          </b>
+          <small>
+           Choose your workspace theme
+          </small>
+         </div>
+         <i>
+          →
+         </i>
+        </button>
+       </div>
+      </div>
+     </section>
+     <!-- CUSTOMERS -->
+     <section class="view" id="view-customers">
+      <div class="page-head">
+       <div>
+        <p class="eyebrow">
+         MEASUREMENT BOOK
+        </p>
+        <h1>
+         Customers
+        </h1>
+        <p class="muted">
+         Find any customer in seconds.
+        </p>
+       </div>
+       <button class="primary-btn" data-view="add">
+        ＋ Add customer
+       </button>
+      </div>
+      <div class="search-bar">
+       <span>
+        ⌕
+       </span>
+       <input id="searchInput" placeholder="Search by name or phone number..."/>
+       <kbd>
+        ⌘ K
+       </kbd>
+      </div>
+      <div class="customer-grid" id="customerGrid">
+      </div>
+     </section>
+     <!-- ADD CUSTOMER -->
+     <section class="view" id="view-add">
+      <div class="page-head">
+       <div>
+        <p class="eyebrow">
+         NEW RECORD
+        </p>
+        <h1 id="formTitle">
+         Add customer
+        </h1>
+        <p class="muted" id="formSubtitle">
+         Create a profile, then save their measurements.
+        </p>
+       </div>
+       <button class="ghost-btn" data-view="customers">
+        Cancel
+       </button>
+      </div>
+      <div class="form-layout">
+       <form class="panel customer-form" id="customerForm">
+        <div class="form-section">
+         <div class="section-title">
+          <span>
+           01
+          </span>
+          <div>
+           <h3>
+            Customer details
+           </h3>
+           <p>
+            The basics you need to recognize them.
+           </p>
+          </div>
+         </div>
+         <div class="photo-row">
+          <div class="photo-upload" id="photoPreview">
+           ＋
+           <small>
+            Add photo
+           </small>
+           <input accept="image/*" id="customerPhoto" type="file"/>
+          </div>
+          <div class="field-grid two">
+           <label>
+            Full name
+            <input id="customerName" placeholder="e.g. Aisha Bello" required=""/>
+           </label>
+           <label>
+            Phone number
+            <input id="customerPhone" placeholder="e.g. 0803 123 4567"/>
+           </label>
+           <label>
+            Gender
+            <select id="customerGender">
+             <option>
+              Female
+             </option>
+             <option>
+              Male
+             </option>
+             <option>
+              Other
+             </option>
+            </select>
+           </label>
+           <label>
+            Style / category
+            <select id="customerCategory">
+             <option>
+              Dress
+             </option>
+             <option>
+              Native wear
+             </option>
+             <option>
+              Shirt
+             </option>
+             <option>
+              Trousers
+             </option>
+             <option>
+              Agbada
+             </option>
+             <option>
+              Custom
+             </option>
+            </select>
+           </label>
+           <label>
+            Starting date
+            <input id="startDate" type="date" required="">
+           </label>
+           <label>
+            Delivery date
+            <input id="deliveryDate" type="date" required="">
+           </label>
+          </div>
+         </div>
+        </div>
+        <div class="form-section">
+         <div class="section-title">
+          <span>
+           02
+          </span>
+          <div>
+           <h3>
+            Measurements
+           </h3>
+           <p>
+            Enter what you took today. You can add more later.
+           </p>
+          </div>
+         </div>
+         <div class="template-row">
+          <span>
+           Quick template
+          </span>
+          <button class="template active" data-template="dress" type="button">
+           Dress
+          </button>
+          <button class="template" data-template="native" type="button">
+           Native
+          </button>
+          <button class="template" data-template="shirt" type="button">
+           Shirt
+          </button>
+          <button class="template" data-template="trouser" type="button">
+           Trousers
+          </button>
+         </div>
+         <div class="unit-row">
+          <span>Measurement unit</span>
+          <div class="unit-switch" role="group" aria-label="Measurement unit">
+           <button class="unit-btn active" data-unit="in" type="button">Inches (in)</button>
+           <button class="unit-btn" data-unit="cm" type="button">Centimetres (cm)</button>
+          </div>
+          <span class="unit-help">Enter measurements in the unit shown. You can switch units for each record.</span>
+         </div>
+         <div class="measurement-grid" id="measurementFields"></div>
+         <div class="custom-measurements-head">
+          <div><b>Custom measurements</b><small>Add anything your template needs.</small></div>
+          <button class="ghost-btn small-btn" id="addCustomMeasurement" type="button">＋ Add measurement</button>
+         </div>
+         <div class="custom-measurement-fields" id="customMeasurementFields"></div>
+        </div>
+        <div class="form-section">
+         <div class="section-title">
+          <span>03</span>
+          <div><h3>Order & payment</h3><p>Optional — track price, payment and progress for this customer.</p></div>
+         </div>
+         <div class="field-grid three">
+          <label>Order price (₦)<input id="price" inputmode="numeric" placeholder="e.g. 45000"></label>
+          <label>Amount paid (₦)<input id="paid" inputmode="numeric" placeholder="e.g. 20000"></label>
+          <label>Order status<select id="orderStatus"><option>In progress</option><option>Waiting for fabric</option><option>Ready</option><option>Delivered</option><option>Cancelled</option></select></label>
+         </div>
+        </div>
+        <div class="form-section">
+         <div class="section-title">
+          <span>04</span>
+          <div>
+           <h3>
+            Notes
+           </h3>
+           <p>
+            Anything your future self should remember.
+           </p>
+          </div>
+         </div>
+         <textarea id="customerNotes" placeholder="Preferred fit, fabric notes, delivery date..." rows="4"></textarea>
+        </div>
+        <button class="primary-btn full save-btn" type="submit">
+         Save customer & measurements
+         <span>
+          →
+         </span>
+        </button>
+       </form>
+       <div class="panel side-tip">
+        <span class="tip-icon">
+         ✦
+        </span>
+        <h3>
+         Never lose the book again.
+        </h3>
+        <p>
+         Every profile is designed to become a permanent digital record. When Supabase is connected, your records can follow you to any device.
+        </p>
+        <div class="tip-line">
+         <span>
+          ✓
+         </span>
+         Customer photo
+        </div>
+        <div class="tip-line">
+         <span>
+          ✓
+         </span>
+         Measurement history
+        </div>
+        <div class="tip-line">
+         <span>
+          ✓
+         </span>
+         Search anytime
+        </div>
+        <div class="tip-line">
+         <span>
+          ✓
+         </span>
+         Cloud backup
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- PROFILE -->
+     <section class="view" id="view-profile">
+      <div class="profile-head">
+       <button class="back-btn" data-view="customers">
+        ← Customers
+       </button>
+       <div class="profile-main">
+        <div class="large-avatar" id="profileAvatar">
+         A
+        </div>
+        <div>
+         <p class="eyebrow">
+          CUSTOMER PROFILE
+         </p>
+         <h1 id="profileName">
+          Aisha Bello
+         </h1>
+         <p class="muted" id="profileMeta">
+          0803 123 4567 · Dress
+         </p>
+        </div>
+       </div>
+       <div class="profile-actions">
+        <button class="ghost-btn" id="whatsappBtn">
+         WhatsApp
+        </button>
+        <button class="primary-btn" id="editProfileBtn">
+         Edit
+        </button>
+        <button class="danger-btn" id="deleteProfileBtn" type="button">
+         Delete profile
+        </button>
+       </div>
+      </div>
+      <div class="profile-grid">
+       <div class="panel order-summary-panel">
+        <div class="panel-head"><div><h3>Order & payment</h3><p>Quick view of this customer's money and progress.</p></div><span class="status-badge" id="profileOrderStatus">In progress</span></div>
+        <div class="money-grid">
+         <div><span>Order price</span><b id="profilePrice">₦0</b></div>
+         <div><span>Paid</span><b id="profilePaid">₦0</b></div>
+         <div><span>Balance</span><b id="profileBalance">₦0</b></div>
+        </div>
+       </div>
+       <div class="panel delivery-detail-panel">
+        <div class="panel-head">
+         <div>
+          <h3>Order & delivery</h3>
+          <p>Keep this customer's sewing schedule visible.</p>
+         </div>
+         <span class="status-badge" id="profileDeliveryStatus">No schedule</span>
+        </div>
+        <div class="schedule-grid">
+         <div class="schedule-card">
+          <span>Starting date</span>
+          <b id="profileStartDate">—</b>
+         </div>
+         <div class="schedule-card">
+          <span>Delivery date</span>
+          <b id="profileDeliveryDate">—</b>
+         </div>
+        </div>
+        <div class="delivery-message" id="profileDeliveryMessage">No delivery date has been set.</div>
+       </div>
+       <div class="panel">
+        <div class="panel-head">
+         <div>
+          <h3>
+           Current measurements
+          </h3>
+          <p id="profileDate">
+           Saved today
+          </p>
+         </div>
+         <button class="text-link" id="newMeasurementBtn">
+          ＋ New set
+         </button>
+        </div>
+        <div class="measure-cards" id="profileMeasurements">
+        </div>
+       </div>
+       <div class="panel">
+        <div class="panel-head">
+         <div>
+          <h3>
+           Customer notes
+          </h3>
+          <p>
+           Private notes for your work.
+          </p>
+         </div>
+        </div>
+        <div class="note-box" id="profileNotes">
+         No notes yet.
+        </div>
+        <div class="history-title">
+         Measurement history
+        </div>
+        <div class="history-item current-history"><span>Current set</span><b id="historyDate">Today</b><i>●</i></div>
+        <div id="measurementHistory"></div>
+       </div>
+      </div>
+     </section>
+     <!-- ACCOUNT -->
+     <section class="view" id="view-account">
+      <div class="page-head"><div><p class="eyebrow">YOUR ACCOUNT</p><h1>Profile & workspace</h1><p class="muted">Update your profile picture and the name shown across STICHA.</p></div><button class="ghost-btn" data-view="dashboard">← Back</button></div>
+      <div class="account-grid">
+       <div class="panel account-card">
+        <div class="account-identity"><div class="account-avatar-preview" id="accountAvatarPreview">S</div><div><h2 id="accountDisplayName">STICHA</h2><p class="muted" id="accountEmail"></p></div></div>
+        <label class="photo-picker">Change profile picture<input id="accountAvatarInput" type="file" accept="image/*" hidden><span>Choose image</span></label>
+        <div class="field-grid two account-fields">
+         <label>Full name<input id="accountFullName" type="text" autocomplete="name" placeholder="Your full name"></label>
+         <label>Business name<input id="accountBusinessName" type="text" autocomplete="organization" placeholder="Your tailoring business"></label>
+        </div>
+        <button class="primary-btn" id="saveAccountBtn" type="button">Save profile <span>→</span></button>
+       </div>
+       <div class="panel account-side">
+        <div class="panel-head"><div><h3>Your account</h3><p>Sign out safely and return to this same account later.</p></div><span class="help-icon">◉</span></div>
+        <div class="account-email-box"><small>Signed in as</small><b id="accountEmailSide"></b></div>
+        <button class="danger-btn full" id="signOutBtn" type="button">Sign out</button>
+        <p class="tiny">STICHA remembers the email address on this device after sign out, so you won't need to type it again.</p>
+       </div>
+      </div>
+     </section>
+     <!-- THEMES -->
+     <section class="view" id="view-themes">
+      <div class="page-head">
+       <div><p class="eyebrow">MAKE IT YOURS</p><h1>Appearance</h1><p class="muted">Choose a background palette and a text style. Your choice is saved on this device.</p></div>
+       <button class="ghost-btn" data-view="dashboard">← Back</button>
+      </div>
+      <div class="theme-section panel">
+       <div class="section-title"><span>01</span><div><h3>Background themes</h3><p>Ten premium palettes, including STICHA's clean white-and-green default.</p></div></div>
+       <div class="theme-grid sticha-theme-grid">
+        <button class="theme-card" data-theme-choice="sticha"><div class="theme-preview sticha-preview"><b>ST</b><i></i></div><b>STICHA Green & White</b><small>Clean, lively & practical</small></button>
+        <button class="theme-card" data-theme-choice="midnight"><div class="theme-preview midnight-preview"><b>ST</b><i></i></div><b>Midnight Luxury</b><small>Deep navy, gold & ivory</small></button>
+        <button class="theme-card" data-theme-choice="royalnavy"><div class="theme-preview royalnavy-preview"><b>ST</b><i></i></div><b>Royal Navy & Gold</b><small>Classic & commanding</small></button>
+        <button class="theme-card" data-theme-choice="emerald"><div class="theme-preview emerald-preview"><b>ST</b><i></i></div><b>Emerald Luxury</b><small>Fresh & premium</small></button>
+        <button class="theme-card" data-theme-choice="burgundy"><div class="theme-preview burgundy-preview"><b>ST</b><i></i></div><b>Burgundy & Champagne</b><small>Warm & sophisticated</small></button>
+        <button class="theme-card" data-theme-choice="blackgold"><div class="theme-preview blackgold-preview"><b>ST</b><i></i></div><b>Black & Gold Couture</b><small>Bold & editorial</small></button>
+        <button class="theme-card" data-theme-choice="cream"><div class="theme-preview cream-preview"><b>ST</b><i></i></div><b>Cream & Cocoa</b><small>Soft & welcoming</small></button>
+        <button class="theme-card" data-theme-choice="purple"><div class="theme-preview purple-preview"><b>ST</b><i></i></div><b>Royal Purple & Gold</b><small>Creative & regal</small></button>
+        <button class="theme-card" data-theme-choice="sapphire"><div class="theme-preview sapphire-preview"><b>ST</b><i></i></div><b>Sapphire Blue</b><small>Bright & energetic</small></button>
+        <button class="theme-card" data-theme-choice="terracotta"><div class="theme-preview terracotta-preview"><b>ST</b><i></i></div><b>Terracotta & Sand</b><small>Earthy & expressive</small></button>
+        <button class="theme-card" data-theme-choice="forest"><div class="theme-preview forest-preview"><b>ST</b><i></i></div><b>Forest & Ivory</b><small>Natural & calm</small></button>
+       </div>
+      </div>
+      <div class="theme-section panel">
+       <div class="section-title"><span>02</span><div><h3>Text theme</h3><p>Change how headings and body text feel without changing your records.</p></div></div>
+       <div class="text-theme-grid">
+        <button class="text-theme-choice" data-text-theme="classic"><b>Classic</b><small>Elegant serif headings</small></button>
+        <button class="text-theme-choice" data-text-theme="modern"><b>Modern</b><small>Clean, friendly & simple</small></button>
+        <button class="text-theme-choice" data-text-theme="editorial"><b>Editorial</b><small>Fashion-magazine feel</small></button>
+        <button class="text-theme-choice" data-text-theme="compact"><b>Compact</b><small>Small & efficient</small></button>
+       </div>
+      </div>
+     </section>
+     <!-- HELP -->
+     <section class="view" id="view-help">
+      <div class="page-head"><div><p class="eyebrow">SUPPORT CENTRE</p><h1>Help & settings</h1><p class="muted">Everything you need to make STICHA comfortable for your daily tailoring work.</p></div><button class="ghost-btn" data-view="dashboard">← Back</button></div>
+      <div class="help-grid">
+       <div class="panel alarm-settings">
+        <div class="panel-head"><div><h3>Ringing & emergency alerts</h3><p>Choose the sound STICHA uses for delivery reminders while the app is open.</p></div><span class="help-icon">🔔</span></div>
+        <div class="setting-row"><div><b>Delivery alarms</b><small>Notify you when an order is due or overdue.</small></div><button class="toggle-btn" id="helpAlarmToggle" type="button"><span></span><b>Off</b></button></div>
+        <label class="alarm-time-row"><span><b>Reminder time</b><small>Choose when a due-today alert should ring.</small></span><input id="alarmTime" type="time" value="08:00"/></label>
+        <div class="tone-list" id="toneList"></div>
+        <button class="primary-btn full" id="testToneBtn" type="button">▶ Test selected tone</button>
+       </div>
+       <div class="panel data-tools-card">
+        <div class="panel-head"><div><h3>Data safety & backup</h3><p>Your records stay usable without internet. Export a backup before changing devices.</p></div><span class="help-icon">☁</span></div>
+        <div class="offline-status-card"><span class="status-dot"></span><div><b data-offline-status>Local data ready</b><small>Offline-first storage is active on this device.</small></div></div>
+        <div class="data-actions"><button class="primary-btn" id="exportBackup" type="button">Export STICHA backup</button><button class="ghost-btn" id="exportCSV" type="button">Export CSV</button><label class="ghost-btn file-btn">Import backup<input id="importBackup" type="file" accept="application/json,.json" hidden></label></div>
+        <p class="tiny">When Supabase is connected, these local records can be synced to your account. Keep RLS enabled so each tailor only sees their own data.</p>
+       </div>
+       <div class="panel help-card">
+        <div class="panel-head"><div><h3>Quick help</h3><p>Common questions about using STICHA.</p></div><span class="help-icon">?</span></div>
+        <div class="faq-list">
+         <details open><summary>What is STICHA?</summary><p>STICHA is a digital measurement book for tailors. It keeps customer details, measurements, notes and delivery dates organised in one simple place.</p></details>
+         <details><summary>Can I use it on my phone?</summary><p>Yes. STICHA is designed to work on phones, tablets and desktop screens, with large touch-friendly controls on smaller screens.</p></details>
+         <details><summary>Where are my customer records saved?</summary><p>STICHA is offline-first. Records are saved locally so you can keep working without internet. Supabase can be connected later for secure account-based cloud sync.</p></details>
+         <details><summary>Can I use inches and centimetres?</summary><p>Yes. Choose Inches or Centimetres before entering measurements. Each customer record remembers its selected unit. You can also add custom measurement fields.</p></details>
+         <details><summary>How do delivery reminders work?</summary><p>Set a starting date and delivery date. Turn alarms on and STICHA checks due orders while the app is open and can show a browser notification if permission is granted.</p></details>
+         <details><summary>Can I change the colours?</summary><p>Yes. Open Appearance to choose any of the ten background themes or switch your text style.</p></details>
+         <details><summary>Can I use my own ringtone file?</summary><p>The current version provides ten built-in emergency-style tones. A future version can support uploaded audio files and deeper device-level notification settings.</p></details>
+        </div>
+       </div>
+      </div>
+     </section>
+    </main>
+   </div>
+  </div>
+  <div class="celebration" id="celebration" aria-hidden="true">
+   <div class="celebration-card">
+    <div class="celebration-icon">✓</div>
+    <div class="confetti" id="confetti"></div>
+    <p class="eyebrow">RECORD SAVED</p>
+    <h2>Congratulations!</h2>
+    <p>You've added a new customer measurement.</p>
+    <button class="primary-btn" id="celebrationClose" type="button">Continue</button>
+   </div>
+  </div>
+  <div class="reminder-modal" id="reminderModal" aria-hidden="true">
+   <div class="reminder-card">
+    <div class="reminder-bell">🔔</div>
+    <p class="eyebrow">DELIVERY REMINDER</p>
+    <h2 id="reminderTitle">Delivery is due</h2>
+    <p id="reminderText">It is time for this customer's delivery.</p>
+    <button class="primary-btn" id="reminderClose" type="button">I understand</button>
+   </div>
+  </div>
+  <div class="toast" id="toast">
+   <span>
+    ✓
+   </span>
+   <div>
+    <b>
+     Saved
+    </b>
+    <small>
+     Your customer was added successfully.
+    </small>
+   </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="supabase-client.js"></script>
+  <script src="app.js"></script>
+ <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}</script>
+ </body>
+</html>
